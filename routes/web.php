@@ -2,9 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Middleware\EnsureUserIsLoggedIn;
 
-Route::view('/', 'index');
-Route::get('/login', [LoginController::class, 'index']);
+Route::view('/', 'index')
+        ->middleware(EnsureUserIsLoggedIn::class);
+
+Route::get('/login', [LoginController::class, 'index'])
+        ->middleware(EnsureUserIsLoggedIn::class);
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])

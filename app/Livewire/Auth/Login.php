@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 use App\Models\Client;
 
@@ -19,13 +20,19 @@ class Login extends Component
         
         $client = Client::where('username', $this->username)->where('password', $this->password)->first();
 
+        Cookie::queue(
+            name: 'userId',
+            value: $client->id,
+            minutes: 60,
+            path: '/'
+        );
+
         if ($client) {
-            session()->flash('message', $client->name);
+            session()->flash('message', 'Logged in!');
+            $this->redirect('/');
         } else {
-            session()->flash('message', 'El usuario no existe');
+            session()->flash('message', 'El usuario no existe o la cookie no ha sido creada...');
         }
-
-
     }
 
     public function render()
