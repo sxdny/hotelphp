@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('content')
 <header class="m-5 flex flex-col self-center gap-6 max-w-[55%]">

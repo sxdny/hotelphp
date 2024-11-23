@@ -16,7 +16,12 @@ class EnsureUserIsLoggedIn
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Verifico que hay un usuario que ha iniciado sesión
         $userId = $request->cookie('userId');
+        
+        if(!$userId) {
+            return redirect('/');
+        }
         
         view()->share('userId', $userId);
         return $next($request);

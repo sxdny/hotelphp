@@ -10,7 +10,6 @@ class LoginController extends Controller
 {
     public function index()
     {
-        $userId = request()->cookie('userId');
-        return view('auth.login', ['showNavigation' => false, $userId]);
+        return view('auth.login', ['showNavigation' => false]);
     }   
 }
