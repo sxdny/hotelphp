@@ -15,18 +15,16 @@ class Login extends Component
 
     public function login()
     {
-       $fields = $this->validate([
+       $validatedFields = $this->validate([
             'email' => 'required|email|max:20',
             'password' => 'required|string|max:20'
         ]);
 
         // segundo parámetro es un remember me, configuarlo después
-        if(Auth::attempt($fields, true)) {
+        if(Auth::attempt($validatedFields, true)) {
             return redirect()->route('home');
         } else {
-            return back()->withErrors([
-                'failed' => 'failed' 
-            ]);
+            return $this->addError('failed', 'These credentials are not found in our database...');
         }
     }
 

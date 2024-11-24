@@ -15,4 +15,8 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index'])
         ->middleware(['auth'])
         ->name('dashboard');
+
+Route::get('/dashboard/rooms', [DashboardController::class, 'rooms'])
+        ->middleware(['auth'])
+        ->name('view-rooms');
 ?>
