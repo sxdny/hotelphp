@@ -12,7 +12,8 @@ class Rooms extends Model
         'type',
         'capacity',
         'image_url',
-        'capacity'
+        'state',
+        'price',
     ];
 
     // protected $hidden = [
