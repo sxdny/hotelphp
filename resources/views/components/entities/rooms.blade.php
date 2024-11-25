@@ -10,7 +10,7 @@
         </div>
 
         <div class="flex gap-2">
-            <button class="bg-red-800 text-red-100 px-2 py-1 border border-red-100 rounded">Delete a Room</button>
+            {{-- <button class="bg-red-800 text-red-100 px-2 py-1 border border-red-100 rounded">Delete a Room</button> --}}
             <button @click="showModal = ! showModal" class="bg-green-800 text-green-100 px-2 py-1 border border-green-100 rounded">Add a New Room</button>
 
             <div class="absolute m-auto left-0 right-0 w-[50rem] rounded border border-neutral-600 z-50 bg-neutral-800 p-5" x-show="showModal" @click.outside="showModal = false">
