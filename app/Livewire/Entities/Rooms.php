@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Entities;
 
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 use App\Models\Rooms as RoomModel;
 
@@ -9,9 +10,17 @@ class Rooms extends Component
 {
     public $tableProperties;
     public $rooms;
+    #[Reactive]
+    public $indexRoom = 0;
+    public $visible;
 
     public $selectedRooms = [];
 
+    public function nextRoom()
+    {
+        dd("Alert");
+    }
+    
     public function mount()
     {
         $this->rooms = RoomModel::all();

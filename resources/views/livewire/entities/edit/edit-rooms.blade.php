@@ -1,9 +1,14 @@
-<div class="mt-5 flex flex-col gap-8">
+<div x-data="{visible : @js($visible)}" x-show="visible" class="mt-5 flex flex-col gap-8">
+    @if ($visible = true)
+        <p>This form must be shown.</p>
+    @endif
+
+    This is the form {{ $roomId }}
     <form class="flex flex-col gap-2" wire:submit.prevent="editRoom">
         @csrf
         <div class="flex flex-col gap-2 text-left">
             <label class="text-neutral-400 text-sm font-semibold">Name:</label>
-            <input class="bg-neutral-700 border-neutral-600 text-neutral-300" type="text" wire:model="name"/>
+            <input class="bg-neutral-700 border-neutral-600 text-neutral-300" type="text" wire:model.live="name"/>
             @error('name') <span class="text-red-400">{{ $message }}</span> @enderror
         </div>
         <div class="flex flex-col gap-2 text-left">
