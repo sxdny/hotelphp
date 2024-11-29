@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Entities;
 
-use Livewire\Attributes\Reactive;
 use Livewire\Component;
 use App\Models\Rooms as RoomModel;
 
@@ -10,17 +9,12 @@ class Rooms extends Component
 {
     public $tableProperties;
     public $rooms;
-    #[Reactive]
-    public $indexRoom = 0;
     public $visible;
-
+    public $currentRoom = 0;
     public $selectedRooms = [];
 
-    public function nextRoom()
-    {
-        dd("Alert");
-    }
-    
+    public $showRooms = false;
+
     public function mount()
     {
         $this->rooms = RoomModel::all();
@@ -28,9 +22,19 @@ class Rooms extends Component
         $this->tableProperties = array_keys($this->rooms[0]->getAttributes());
     }
 
-    public function editRooms()
+    public function resetCurrentRoom()
     {
-        // editar las habitaciones
+        $this->currentRoom = 0;
+    }
+
+    public function toggleViewRooms()
+    {
+        $this->showRooms = !$this->showRooms;
+    }
+
+    public function hideRoomView()
+    {
+        $this->showRooms = false;
     }
     
     public function render()

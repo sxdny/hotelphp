@@ -7,18 +7,25 @@ use Livewire\Component;
 
 class ShowEditForms extends Component
 {
-
     #[Reactive]
     public $rooms;
     public $currentRoom = 0;
+    public $roomIdToEdit = 0;
 
     public function nextRoom()
     {
         if($this->currentRoom != count($this->rooms) - 1)
         {
             $this->currentRoom++;
-            
+            $this->dispatch("roomChanged");
+            $this->roomIdToEdit = $this->rooms[$this->currentRoom];
+
         }
+    }
+
+    public function mount()
+    {
+        $this->roomIdToEdit = $this->rooms[$this->currentRoom];
     }
 
     public function resetCoounter()
