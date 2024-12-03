@@ -37,6 +37,6 @@
             <input class="bg-neutral-700 border-neutral-600 text-neutral-300" type="file" wire:model="image"/>
             @error('image') <span class="text-red-400">{{ $message }}</span> @enderror
         </div>
-        <button class="bg-white text-black mr-auto px-3 py-2 border-black border rounded" type="submit">Add</button>
+        {{-- <button class="bg-white text-black mr-auto px-3 py-2 border-black border rounded" type="submit">Add</button> --}}
     </form>
 </div>

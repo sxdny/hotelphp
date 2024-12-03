@@ -17,10 +17,21 @@ class ShowEditForms extends Component
         if($this->currentRoom != count($this->rooms) - 1)
         {
             $this->currentRoom++;
-            $this->dispatch("roomChanged");
+            $this->dispatch("roomChanged"); // sends the 'signal' to the whole component
             $this->roomIdToEdit = $this->rooms[$this->currentRoom];
 
         }
+    }
+
+    public function previousRoom()
+    {
+        if($this->currentRoom != 0)
+        {
+            $this->currentRoom--;
+            $this->dispatch("roomChanged"); // sends the 'signal' to the whole component
+            $this->roomIdToEdit = $this->rooms[$this->currentRoom];
+
+        } 
     }
 
     public function mount()
