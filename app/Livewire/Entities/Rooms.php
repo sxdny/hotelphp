@@ -22,6 +22,8 @@ class Rooms extends Component
         $this->tableProperties = array_keys($this->rooms[0]->getAttributes());
     }
 
+    // Reset the currentRoom when opening and
+    // closing the multiple edit menu.
     public function resetCurrentRoom()
     {
         $this->currentRoom = 0;
@@ -39,11 +41,6 @@ class Rooms extends Component
     
     public function render()
     {
-        // better aproach
-        // return view('livewire.entities.rooms', [
-        //     'rooms' => RoomModel::all(),
-        // ]);
-
         return view('livewire.entities.rooms');
     }
 }

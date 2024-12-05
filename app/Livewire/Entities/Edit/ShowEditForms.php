@@ -39,11 +39,6 @@ class ShowEditForms extends Component
         $this->roomIdToEdit = $this->rooms[$this->currentRoom];
     }
 
-    public function resetCoounter()
-    {
-        $this->currentRoom = 0;
-    }
-
     public function render()
     {
         return view('livewire.entities.edit.show-edit-forms');
